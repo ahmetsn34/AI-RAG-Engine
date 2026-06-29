@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  rag-backend:
+    image: python:3.10-slim
+    container_name: local_rag_backend
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    command: sh -c "pip install --no-cache-dir -r requirements.txt && python app.py"
+    environment:
+      - PYTHONUNBUFFERED=1
